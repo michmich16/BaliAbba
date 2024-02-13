@@ -1,10 +1,9 @@
-//fetchCategoryData()
+fetchCategoryData()
 fetchProductData()
-receivedProductData()
 
- function fetchProductData() {
-         fetch('https://dummyjson.com/products')
-         .then((result) => {
+function fetchProductData() {
+    fetch('https://dummyjson.com/products')
+        .then((result) => {
 
             return result.json();
         })
@@ -14,38 +13,40 @@ receivedProductData()
 
         });
 
-    }
+}
+function fetchCategoryData() {
+    fetch('https://dummyjson.com/products/categories')
+        .then((result) => {
 
-function receivedProductData(ProductData) {
-    //console.log(ProductData);
+            return result.json();
+        })
+        .then((json) => {
 
-    let myProducts = ProductData.products
+            receivedCategoryData(json);
+
+        });
+
+}
+
+function receivedProductData(productData) {
+    console.log(productData);
+
+    let myProducts = productData.products;
 
     let myFeaturedProducts = [];
 
-    myFeaturedProducts.push(myProducts[6], myProducts[9], myProducts[23])
+    myFeaturedProducts.push(myProducts[1], myProducts[10], myProducts[20])
 
     console.log(myFeaturedProducts);
 
+}
+
+function receivedCategoryData(categoryData) {
+    let myCategory = categoryData.map(category => [category]);
+    console.log(myCategory);
 }
 
 
 
 
 
-
-
-
-    // function fetchCategoryData() {
-    //     fetch('https://dummyjson.com/products/categories')
-    //     .then((result) => {
-    
-    //         return result.json();
-    //     })
-    //     .then((json) => {
-    
-    //         receivedCategoryData(json);
-    
-    //     });
-    
-    // }
