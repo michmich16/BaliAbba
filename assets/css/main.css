@@ -2,6 +2,11 @@ body{
     background-color: #c4c4c4;
 }
 
+.header-main a{
+    text-decoration: none;
+    color: red;
+}
+
 #featuredProducts {
     width: 100%;
     height: 700px;
@@ -20,13 +25,12 @@ body{
   
   #featuredProducts img {
     width: 100%;
-    /* object-fit: cover; */
+    object-fit: cover;
   }
   
   .productDetails {
-    /* aspect-ratio: 16/9; */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    aspect-ratio: 16/9;
+
   }
   
   .productDetails img {

@@ -44,6 +44,19 @@ function fetchCategoryData() {
 
 // controller code
 
+
+//Get random number from 0-29
+const randomNumber1 = Math.floor(Math.random() * 29) + 0;
+console.log(randomNumber1);
+
+const randomNumber2 = Math.floor(Math.random() * 29) + 0;
+console.log(randomNumber2);
+
+const randomNumber3 = Math.floor(Math.random() * 29) + 0;
+console.log(randomNumber3);
+
+
+
 function receivedProductData(productData) {
     //console.log(productData);
 
@@ -51,7 +64,7 @@ function receivedProductData(productData) {
 
     let myFeaturedProducts = [];
 
-    myFeaturedProducts.push(myProducts[1], myProducts[10], myProducts[20])
+    myFeaturedProducts.push(myProducts[randomNumber1], myProducts[randomNumber2], myProducts[randomNumber3])
 
     createProductView(myFeaturedProducts)
     // CreateProductView(myProducts)
@@ -148,7 +161,9 @@ function createProductView(myCards) {
         // console.log(product);
 
 
-        let myHTML = `<figure onclick="productCallback(${product.id})" ><h2>${product.title}</h2><img src="${product.thumbnail}"><h3>PRIS: ${product.price} rabat: ${product.discountPercentage}</h3></figure>`
+        let myHTML = `<figure onclick="productCallback(${product.id})" >
+        <h2>${product.title}</h2><img src="${product.thumbnail}">
+        <h3>PRIS: ${product.price} rabat: ${product.discountPercentage}</h3></figure>`
 
 
         productSection.innerHTML += myHTML
@@ -159,13 +174,13 @@ function createProductView(myCards) {
 function buildProduct(product) {
 
     let myHTML = `<figure class="productDetails">
-    <h2>${product.title}</h2>
+    <h2>${product.title} ${product.rating}</h2>
     <img src="${product.images[0]}">
     <img src="${product.images[1]}">
     <img src="${product.images[2]}">
     <img src="${product.images[3]}">
-    <h3>PRIS: ${product.price}</h3>
-    <p>${product.description}</p>
+    <h3>PRICE: ${product.price} rabat: ${product.discountPercentage}</h3>
+    <p> About This Product: ${product.description}</p>
     </figure>
     `
 
