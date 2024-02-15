@@ -8,12 +8,11 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
     text-align: justify;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    display: inline-block;
   }
   
   #featuredProducts figure {
-    width: 90%;
+    width: 25%;
     aspect-ratio: 4/5;
     display: inline-block;
     border: 2px solid black;
@@ -25,7 +24,7 @@ body{
   }
   
   .productDetails {
-    aspect-ratio: 16/9;
+    /* aspect-ratio: 16/9; */
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
