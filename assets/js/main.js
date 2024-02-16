@@ -138,7 +138,7 @@ function productCallback(myId) {
 
 function createNavBar(mycategories) {
     //navElement
-    let myHTML = `<button onclick = "navCallBack('All')">All</button>`
+    let myHTML = `<button class="all-button" onclick = "navCallBack('All')">All</button>`
 
     mycategories.forEach(element => {
         console.log(element);
@@ -161,9 +161,9 @@ function createProductView(myCards) {
         // console.log(product);
 
 
-        let myHTML = `<figure onclick="productCallback(${product.id})" >
+        let myHTML = `<div class="product-cards"><figure onclick="productCallback(${product.id})" >
         <h2>${product.title}</h2><img src="${product.thumbnail}">
-        <h3>PRIS: ${product.price} rabat: ${product.discountPercentage}</h3></figure>`
+        <h3>PRIS: ${product.price} rabat: ${product.discountPercentage}</h3></figure></div>`
 
 
         productSection.innerHTML += myHTML
@@ -173,16 +173,20 @@ function createProductView(myCards) {
 //----------------------------------------------------------------------
 function buildProduct(product) {
 
-    let myHTML = `<figure class="productDetails">
-    <h2>${product.title} ${product.rating}</h2>
+    let myHTML = `<div class="productinfo"><figure class="productDetails">
     <img src="${product.images[0]}">
     <img src="${product.images[1]}">
     <img src="${product.images[2]}">
-    <img src="${product.images[3]}">
-    <h3>PRICE: ${product.price} rabat: ${product.discountPercentage}</h3>
-    <p> About This Product: ${product.description}</p>
     </figure>
-    `
+    
+    <section id="selected-product-details">
+    <h2>${product.title} </h2>
+    <h3>Rating: <span style="color:#EBFF00">${product.rating}</span></h3>
+    <h3>PRICE: ${product.price} rabat: <span style="color:red">${product.discountPercentage}</span></h3>
+    <p> About This Product: ${product.description}</p>
+    <button class="add-to-cart">Add to Cart</button>
+    </section></div>`
+
 
 
     productSection.innerHTML = myHTML

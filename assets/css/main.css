@@ -1,54 +1,119 @@
-body{
-    background-color: #c4c4c4;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.header-main a{
-    text-decoration: none;
-    color: red;
+body {
+  background-color: #c4c4c4;
+}
+
+.header-main {
+  display: block;
+  padding: 0.5rem;
+  background-color: #aaaaaa;
+}
+
+.header-main a {
+  text-decoration: none;
+  color: red;
+}
+#navigation div {
+  display: inline-block;
+  background-color: antiquewhite;
+  padding: 20px;
+}
+
+#navigation{
+  margin: 0.2rem;
+}
+
+#navigation button{
+margin: 0.2rem;
+padding: 1rem 3rem;
+border-radius: 10px;
+}
+
+.all-button{
+  background-color: rgb(100, 100, 100);
+  color: white;
 }
 
 #featuredProducts {
-    width: 100%;
-    height: 700px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-align: justify;
-    display: inline-block;
-  }
-  
-  #featuredProducts figure {
-    width: 25%;
-    aspect-ratio: 4/5;
-    display: inline-block;
-    border: 2px solid black;
-  }
-  
-  #featuredProducts img {
-    width: 100%;
-    object-fit: cover;
-  }
-  
-  .productDetails {
-    aspect-ratio: 16/9;
+  width: 100%;
+  height: 700px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+  display: block;
+  margin: auto;
+  padding-bottom: 4rem;
+  padding-top: 2rem;
+}
 
-  }
-  
-  .productDetails img {
-    display: inline-block;
-  }
-  
-  #navigation {
-  }
-  
-  #navigation div {
-    display: inline-block;
-    background-color: antiquewhite;
-    padding: 20px;
-  }
-  
-  #navigation div:hover {
-    display: inline-block;
-    background-color: rgb(56, 41, 22);
-    color: antiquewhite;
-    padding: 20px;
-  }
+#featuredProducts figure {
+  width: 50%;
+  display: block;
+  margin: auto;
+  border: 2px solid black;
+}
+
+#selectedProductDetails {
+  width: 25%;
+  display: block;
+}
+
+#selectedProductDetails img {
+  display: block;
+  width: 100%;
+}
+
+#featuredProducts img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.productinfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+}
+
+#selected-product-details{
+  display: block;
+  padding: 0 1rem;
+}
+
+.add-to-cart {
+  display: block;
+  padding: 1rem 3rem;
+  background-color: black;
+  color: white;
+}
+
+
+
+footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  position: static;
+  background-color: #aaaaaa;
+  padding: 0.5rem;
+}
+
+.footer-info {
+  display: block;
+}
+
+.footer-info li {
+  list-style: none;
+}
+
+footer div iframe {
+  display: block;
+  width: 100%;
+}
+
+.SoMe-logo {
+  display: block;
+  text-align: center;
+}
