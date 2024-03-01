@@ -1,12 +1,14 @@
 //global
 const productSection = document.getElementById('featuredProducts');
 const navElement = document.getElementById('navigation')
+const basketIcon = document.getElementById('basketIcon')
 
 let myProducts = null
 
 // page load
 fetchCategoryData()
 fetchProductData()
+InitializeBasket()
 
 // model code
 
@@ -42,7 +44,132 @@ function fetchCategoryData() {
 
 }
 
+function SaveBasketData(basketData) {
+    //create code to save data object to local storage
+    let mySerializedData = JSON.stringify(basketData)
+
+    localStorage.setItem('myBasket', mySerializedData)
+
+}
+
+
+function ReadLocalStorageData() {
+
+    // write code to read data object and return it
+    let mybasketstring = localStorage.getItem('myBasket')
+    let myBasket = JSON.parse(mybasketstring)
+
+    return myBasket
+}
+
 // controller code
+
+function recivedProductsByCategory(productsByC) {
+
+    let myProductArray = productsByC.products
+
+    CreateProductView(myProductArray)
+
+}
+
+
+
+function CategoryRecived(CategoryData) {
+    // hoved kategori arrays
+    let myElectronics = []
+    let myCosmetics = []
+    let myVehicles = []
+    let womensFashion = []
+    let mensFashion = []
+    let myMisc = []
+
+    CategoryData.forEach(category => {
+
+        switch (category) {
+
+            case 'laptops':
+            case 'lighting':
+            case 'smartphones':
+
+                myElectronics.push(category)
+                break;
+
+            case 'fragrances':
+            case 'skincare':
+                myCosmetics.push(category)
+
+                break;
+
+            case 'automotive':
+            case 'motorcycle':
+                myVehicles.push(category)
+
+                break;
+
+            case 'tops':
+            case 'womens-dresses':
+            case 'womens-shoes':
+            case 'womens-watches':
+            case 'womens-bags':
+            case 'womens-jewellery':
+
+                womensFashion.push(category)
+
+                break;
+
+            case 'tops':
+            case 'mens-shirts':
+            case 'mens-shoes':
+            case 'mens-watches':
+                mensFashion.push(category)
+
+                break;
+
+            default:
+
+                myMisc.push(category)
+                break;
+        }
+
+    });
+
+    // add all to misc
+    myMisc.push('All')
+
+    // build datastructure to view code
+    let myNavigationData = [
+        {
+            superCategoryname: 'Electronics',
+            subCategories: myElectronics
+        },
+        {
+            superCategoryname: 'Cosmetics',
+            subCategories: myCosmetics
+        },
+        {
+            superCategoryname: 'Vehicles',
+            subCategories: myVehicles
+        },
+        {
+            superCategoryname: 'mens fashion',
+            subCategories: mensFashion
+        },
+        {
+            superCategoryname: 'womans fashion',
+            subCategories: womensFashion
+        },
+        {
+            superCategoryname: 'misc',
+            subCategories: myMisc
+        }
+
+    ]
+
+
+
+    CreateNavBar(myNavigationData)
+}
+
 
 
 //Get random number from 0-29
@@ -135,6 +262,38 @@ function productCallback(myId) {
 
 
 // view code
+
+function BuildBasket(products) {
+    clearApp()
+
+    let myBasketHTML = '<section id="basketWiev">'
+    if (products.length > 0) {
+        products.forEach(product => {
+            // console.log(product);
+
+            let myHTML = `<figure><img src="${product.thumbnail}"><h2>${product.title}</h2><p>PRIS: ${product.price}</p><button onclick="BasketRemove(${product.id})">remove</button></figure>`
+
+
+            myBasketHTML += myHTML
+        })
+        myBasketHTML += `<section id="basketTools"><button onclick="paymentCallBack()">Go to payment</button><button onclick="BasketClear()">clear basket</button></section>`
+    } else {
+        myBasketHTML += `<h1>basket empty go buy stuff</h1><button onclick="GetProductData()">OK</button>`
+
+    }
+
+    myBasketHTML += '</section>'
+
+    productSection.innerHTML = myBasketHTML
+}
+
+
+function UpdateBasketIcon(items) {
+
+    let myUpdateElement = document.getElementById('basketProductText')
+    myUpdateElement.innerHTML = items
+
+}
 
 function createNavBar(mycategories) {
     //navElement
